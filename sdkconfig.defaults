@@ -1,0 +1,2 @@
+# UART0 is owned by the RC car JSON protocol (USB serial). No console on UART0.
+CONFIG_ESP_CONSOLE_NONE=y

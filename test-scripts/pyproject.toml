@@ -1,0 +1,7 @@
+[project]
+name = "neuraflow-rc-car-remote-firmware-test-scripts"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "pyserial>=3.5",
+]
