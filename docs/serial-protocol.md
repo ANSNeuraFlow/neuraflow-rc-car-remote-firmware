@@ -60,9 +60,9 @@ Response:
 ```json
 {
   "device": "rc-car",
-  "firmware": "1.1.0",
+  "firmware": "1.0.0",
   "lights_assumed_mode": "steady",
-  "protocol": 2,
+  "protocol": 1,
   "status": "ok",
   "steer_level_max": 143,
   "steer_level_min": -98,

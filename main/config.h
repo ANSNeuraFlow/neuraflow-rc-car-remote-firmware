@@ -2,8 +2,8 @@
 
 #include "driver/gpio.h"
 
-#define FIRMWARE_VERSION "1.1.0"
-#define PROTOCOL_VERSION 2
+#define FIRMWARE_VERSION "1.0.0"
+#define PROTOCOL_VERSION 1
 
 #define UART_BAUD 115200
 #define MAX_LINE_LENGTH 256
