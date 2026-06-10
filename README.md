@@ -86,7 +86,7 @@ python rc_car.py --port /dev/ttyUSB0 cycle-lights
 
 ```
 main/
-  dac_oneshot_example_main.c   # app entry
+  main.c   # app entry
   actuators.c                  # DAC + lights GPIO
   protocol.c                   # JSON command dispatch
   uart_transport.c             # line-framed UART I/O
