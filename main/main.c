@@ -13,5 +13,4 @@ void app_main(void) {
     actuators_init();
     protocol_init();
     ESP_ERROR_CHECK(uart_transport_init());
-    protocol_send_ready_event();
 }

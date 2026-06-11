@@ -31,7 +31,7 @@ Replace `/dev/ttyUSB0` with your port (`/dev/ttyACM*` on Linux, `COM*` on Window
 
 UART0 is dedicated to the protocol (`CONFIG_ESP_CONSOLE_NONE` in `sdkconfig.defaults`). There is no serial console log on the USB port — use the host tools below to talk to the device.
 
-On boot the firmware emits a `ready` event, then accepts commands.
+The host initiates communication after opening the serial port (typically `get_device_info`, then `get_state`).
 
 ## Serial protocol
 

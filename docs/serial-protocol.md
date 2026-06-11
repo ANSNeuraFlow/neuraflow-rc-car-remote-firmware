@@ -12,6 +12,10 @@ Line-delimited JSON over USB UART0 (115200 8N1). CRC rules match host tooling (`
 | Framing   | One JSON object per line, terminated with `\n`                        |
 | Max line  | 256 bytes                                                             |
 
+## Host connect
+
+Open the serial port, then send `get_device_info` to handshake. Optionally follow with `get_state` to sync current levels. The host may retry `get_device_info` briefly if the port was just opened and the ESP32 is still booting (e.g. after DTR reset).
+
 ## CRC16-CCITT
 
 - Polynomial `0x1021`, initial value `0xFFFF`
@@ -119,14 +123,6 @@ One BC547 pulse on GPIO 4 (LOW → HIGH ~100 ms → LOW). Each call advances the
 ```
 
 Suggested host cycle: `off → steady → slow_blink → fast_blink → off`
-
-## Events
-
-### `ready` (on boot)
-
-```json
-{"data":{"device":"rc-car"},"event":"ready","crc":0}
-```
 
 ## Host brake and reverse (not in firmware)
 

@@ -24,11 +24,6 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Control neuraflow-rc-car-remote-firmware over USB serial")
     parser.add_argument("--port", "-p", required=True, help="Serial port (e.g. /dev/ttyUSB0)")
     parser.add_argument("--baud", type=int, default=115200, help="Baud rate (default 115200)")
-    parser.add_argument(
-        "--no-ready",
-        action="store_true",
-        help="Skip waiting for ready event (port already open)",
-    )
 
     subparsers = parser.add_subparsers(dest="command", required=True)
 
@@ -52,10 +47,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     try:
-        if args.no_ready:
-            ser = serial.Serial(args.port, args.baud, timeout=0.1)
-        else:
-            ser = open_serial(args.port, args.baud)
+        ser = open_serial(args.port, args.baud)
 
         if args.command == "heartbeat":
             print(send_command(ser, "heartbeat", {}))

@@ -178,11 +178,6 @@ static void send_response_crc_mismatch(uint16_t received_crc,
     }
 }
 
-void protocol_send_ready_event(void) {
-    const char body[] = "{\"data\":{\"device\":\"rc-car\"},\"event\":\"ready\"}";
-    send_framed_message(body, (uint16_t)(sizeof(body) - 1));
-}
-
 void protocol_init(void) {}
 
 static bool json_item_is_int_in_range(const cJSON* item, int min_value, int max_value,

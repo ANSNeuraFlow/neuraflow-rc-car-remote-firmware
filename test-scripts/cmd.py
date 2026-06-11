@@ -116,29 +116,11 @@ def read_events(ser: serial.Serial, timeout_s: float = 0.5) -> list[dict[str, An
     ]
 
 
-def wait_for_ready(ser: serial.Serial, timeout_s: float = 5.0) -> dict[str, Any] | None:
-    deadline = time.time() + timeout_s
-
-    while time.time() < deadline:
-        for event in read_events(ser, timeout_s=0.3):
-            if event.get("event") == "ready":
-                return event
-        time.sleep(0.05)
-
-    return None
-
-
 def open_serial(port: str, baud: int = 115200) -> serial.Serial:
     reset_recv_buffer()
     ser = serial.Serial(port, baud, timeout=0.1)
     ser.dtr = True
     ser.rts = False
-    print("Waiting for ready event after board reset...")
-    ready = wait_for_ready(ser, timeout_s=6.0)
-    if ready:
-        print("RC car ready:", ready.get("data"))
-    else:
-        print("Warning: no ready event (continuing anyway)")
     return ser
 
 
